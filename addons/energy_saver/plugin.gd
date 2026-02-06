@@ -11,7 +11,7 @@ func _disable_plugin():
 
 
 func _enter_tree():
-	add_custom_type("EnergySaver", "Control", load("res://addons/energy_saver/energy_saver.gd"), load("res://addons/energy_saver/Icon.png"))
+	add_custom_type("EnergySaver", "Node", load("res://addons/energy_saver/energy_saver.gd"), load("res://addons/energy_saver/Icon.png"))
 
 
 func _exit_tree():

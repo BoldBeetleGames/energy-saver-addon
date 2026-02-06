@@ -1,4 +1,4 @@
-extends Control
+extends Node
 class_name EnergySaver
 
 static var instance
@@ -41,7 +41,6 @@ var idle_screen : Control
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	size = DisplayServer.screen_get_size()
 	instance = self
 	
 	var fps_system
