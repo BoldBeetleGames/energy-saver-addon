@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm6orexxpanx"]
+
+[ext_resource type="Script" uid="uid://d4mtt0yrld2rh" path="res://addons/energy_saver/Example/example.gd" id="1_nh52x"]
+[ext_resource type="Script" uid="uid://6r7n058su8lo" path="res://addons/energy_saver/energy_saver.gd" id="2_ycfq7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3bano"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_n4kwq"]
+sky_material = SubResource("ProceduralSkyMaterial_3bano")
+
+[sub_resource type="Environment" id="Environment_rwomb"]
+background_mode = 2
+sky = SubResource("Sky_n4kwq")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_qr2ka"]
+
+[node name="Root" type="Node3D"]
+
+[node name="Game" type="Node3D" parent="."]
+script = ExtResource("1_nh52x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game"]
+environment = SubResource("Environment_rwomb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Game"]
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+mesh = SubResource("SphereMesh_qr2ka")
+skeleton = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 10)
+
+[node name="PauseMenu" type="Control" parent="Game"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Game/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="EnergySaver" type="Control" parent="." node_paths=PackedStringArray("game_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ycfq7")
+game_node = NodePath("../Game")
+time_to_idle = 10
+time_to_dim = 3
+metadata/_custom_type_script = "uid://6r7n058su8lo"

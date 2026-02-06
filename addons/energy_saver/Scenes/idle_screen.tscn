@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dioy2f41fwiuw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gc3hk"]
+font_size = 37
+font_color = Color(0.830335, 0.830335, 0.830335, 1)
+
+[node name="IdleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Idle Mode
+
+Press any Button to Continue Playing"
+label_settings = SubResource("LabelSettings_gc3hk")
+horizontal_alignment = 1
+vertical_alignment = 1

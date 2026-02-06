@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2cqxa7q05v3e"]
+
+[ext_resource type="Script" uid="uid://dy5n6bngsv2m1" path="res://addons/energy_saver/Internal/fps_system.gd" id="1_mi8x5"]
+
+[node name="FpsSystem" type="Node"]
+script = ExtResource("1_mi8x5")
