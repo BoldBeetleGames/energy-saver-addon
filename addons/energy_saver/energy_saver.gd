@@ -1,6 +1,9 @@
 extends Node
 class_name EnergySaver
 
+signal loose_focus
+signal regain_focus
+
 static var instance
 
 @export var game_node : Node
@@ -113,3 +116,10 @@ func enter_idle():
 	if (low_processor_in_idle):
 		OS.low_processor_usage_mode = true
 		OS.low_processor_usage_mode_sleep_usec = low_processor_sleep_usec
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_APPLICATION_FOCUS_OUT:
+			loose_focus.emit()
+		NOTIFICATION_APPLICATION_FOCUS_IN:
+			regain_focus.emit()

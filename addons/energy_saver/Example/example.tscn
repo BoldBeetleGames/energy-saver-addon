@@ -43,13 +43,21 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 10)
 
 [node name="PauseMenu" type="Control" parent="Game"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Game/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Game/PauseMenu"]
 layout_mode = 1
@@ -73,3 +81,5 @@ script = ExtResource("2_ycfq7")
 time_to_idle = 10
 time_to_dim = 2
 metadata/_custom_type_script = "uid://6r7n058su8lo"
+
+[connection signal="loose_focus" from="EnergySaver" to="Game" method="enter_pause_menu"]

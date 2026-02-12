@@ -16,3 +16,6 @@ func _process(delta):
 			EnergySaver.enter_menu()
 		else:
 			EnergySaver.exit_menu()
+
+func enter_pause_menu():
+	 pause_menu.visible = true;
