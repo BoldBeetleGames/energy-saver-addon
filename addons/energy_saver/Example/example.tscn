@@ -43,6 +43,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 10)
 
 [node name="PauseMenu" type="Control" parent="Game"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
